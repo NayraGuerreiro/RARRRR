@@ -1,0 +1,113 @@
+.hidden {
+  display: none !important;
+}
+
+#style-body {
+  display: flex;
+  margin: 0px !important;
+  /* background-image: url("./imagens/background3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+
+.balon {
+  display: flex;
+
+  width: 100px;
+  height: 280px;
+}
+
+#bnt-start {
+  cursor: pointer;
+  border-radius: 40px;
+  width: 200px;
+  height: 70px;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  background-color: aqua;
+}
+
+#header {
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  margin: none;
+  padding: none;
+  border: solid 1px transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 60px;
+  font-family: "Orbitron", sans-serif;
+  color: #20b2aa;
+}
+
+#area-do-jogo {
+  position: relative;
+  z-index: -10;
+  border-radius: 10px;
+  width: 100vw;
+  height: 70vh;
+  margin: 100px 10px;
+  overflow: hidden;
+  background-color: aqua;
+}
+
+#obstaculo {
+  position: absolute;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  animation: animation-obstaculo 3s infinite linear;
+}
+
+.personagem {
+  height: 180px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.jump {
+  animation: jump 500ms ease-in-out;
+}
+
+@keyframes animation-obstaculo {
+  from {
+    right: -80px;
+  }
+
+  to {
+    right: 100%;
+  }
+}
+
+@keyframes jump {
+  0% {
+    bottom: 0;
+  }
+
+  40% {
+    bottom: 100px;
+  }
+
+  50% {
+    bottom: 100px;
+  }
+
+  60% {
+    bottom: 100px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
