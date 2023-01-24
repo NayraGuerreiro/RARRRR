@@ -1,24 +1,39 @@
 const btnStar = document.getElementById("bnt-start");
 const header = document.getElementById("header");
 const areaJogo = document.getElementById("area-do-jogo");
-const personagem = document.getElementsByClassName("personagem");
+const personagem = document.getElementById("personagem");
+const obstaculo = document.getElementById("obstaculo");
 
 btnStar.addEventListener("click", () => {
   header.classList.add("hidden");
+  obstaculo.classList.add("animation");
 });
 
-personagem.addEventListener("keydown", () => {
+const jump = () => {
   personagem.classList.add("jump");
 
   setTimeout(() => {
     personagem.classList.remove("jump");
   }, 500);
-});
+};
 
-// const jump = () => {
-//   personagem.classList.add("jump");
+const loop = setInterval(() => {
+  const positionObstaculo = obstaculo.offsetLeft;
+  const positionPersonagem = +window
+    .getComputedStyle(personagem)
+    .bottom.replace("px", "");
 
-//   setTimeout(() => {
-//     personagem.classList.remove("jump");
-//   }, 500);
-// };
+  if (
+    positionObstaculo <= 180 &&
+    positionObstaculo > 0 &&
+    positionPersonagem < 80
+  ) {
+    obstaculo.style.animation = "none";
+    obstaculo.style.left = `${positionObstaculo}px`;
+
+    personagem.style.animation = "none";
+    personagem.style.bottom = `${positionPersonagem}px`;
+  }
+}, 10);
+
+document.addEventListener("keydown", jump);
