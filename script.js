@@ -5,6 +5,9 @@ const personagem = document.getElementById("personagem");
 const obstaculo = document.getElementById("obstaculo");
 const gameOver = document.getElementById("game-over");
 const restartButton = document.getElementById("reiniciar");
+const score = document.getElementById("score");
+span = document.getElementById("style-score"); //onde ta armazenado o span com a frase: seu score foi:
+let count = 0;
 
 btnStar.addEventListener("click", () => {
   header.classList.add("hidden");
@@ -33,11 +36,12 @@ const loop = setInterval(() => {
 
   if (
     positionObstaculo <= 140 &&
-    positionObstaculo > 0 &&
+    positionObstaculo > 0 && //onde acontece o impacto
     positionPersonagem < 80
   ) {
     gameOverScreen();
 
+    span.innerText = count;
     obstaculo.style.animation = "none";
     obstaculo.style.left = `${positionObstaculo}px`;
 
@@ -49,6 +53,8 @@ const loop = setInterval(() => {
 
     clearInterval(loop);
   }
+  count++;
+  score.innerHTML = `SCORE: ${count}`;
 }, 10);
 
 restartButton.addEventListener(
